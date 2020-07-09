@@ -1,0 +1,37 @@
+package com.sapient;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.sapient.knowledge.RomanSymbols;
+import com.sapient.knowledge.Symbols;
+
+public class MainCompute {
+	public static void main(String[] args) {
+
+		RomanSymbols planetSymbols = new RomanSymbols();
+		Symbols symbols = new Symbols(planetSymbols.getPlanetSymbolMap());
+
+		try {
+			FileInputStream fstream = new FileInputStream("InputFile");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(fstream));
+
+			List<String> commands = new ArrayList<String>();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				commands.add(line);
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}
